@@ -1,0 +1,7 @@
+[*]
+
+
+[*.js]
+quote_type = single
+indentation = space
+indentation_length = 2

@@ -1,0 +1,190 @@
+$cell-border: 1px solid #aab7b8;
+$color-player-x: rgb(0, 60, 255);
+$color-player-o: rgb(57, 148, 16);
+$color-player-x-inverted: rgb(86, 214, 253);
+$color-player-o-inverted: rgb(139, 236, 95);
+$color-background-cell-hover: #f2f3f3;
+$color-background-announcement: rgba(239, 239, 239, 0.9);
+$color-text-announcement: #16191f;
+
+
+.Game {
+  margin: 0 auto;
+  margin-top: 30px;
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #fff;
+  color: #16191f;
+  padding: 1.5rem;
+
+  :global {
+    .color-X {
+      color: $color-player-x;
+    }
+    .color-O {
+      color: $color-player-o;
+    }
+    .color-X-inverted {
+      color: $color-player-x-inverted;
+    }
+    .color-O-inverted {
+      color: $color-player-o-inverted;
+    }
+  }
+}
+
+.Board {
+  display: flex;
+  flex-direction: column;
+}
+
+.Row {
+  display: inline-flex;
+
+  .Cell {
+    min-width: 20px;
+    min-height: 20px;
+    width: 20vw;
+    height: 20vw;
+    max-width: 15rem;
+    max-height: 15rem;
+    font-size: 13vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-right: $cell-border;
+    border-bottom: $cell-border;
+    cursor: pointer;
+    outline: none;
+    background-color: #fff;
+
+    &:disabled {
+      cursor: default;
+    }
+
+    &:first-child {
+      border-left: $cell-border;
+    }
+    &:hover {
+      background-color: $color-background-cell-hover;
+    }
+  }
+
+  &:first-child {
+    .Cell {
+      border-top: $cell-border;
+    }
+  }
+}
+
+.Announcement {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+
+  .RestartButton {
+    background-color: #fff;
+    color: #16191f;
+    border: 1px solid #879596;
+    border-radius: 2px;
+    padding: 1.6vw 3.2vw;
+    cursor: pointer;
+    &:hover {
+        color: #16191f;
+        border: 1px solid #879596;
+        background-color: #fff;
+    }
+    &:focus {
+        color: #16191f;
+        border: 1px solid #879596;
+        background-color: #fff;
+    }
+    @media (min-width: 448px) {
+        padding: 0.7rem 1.5rem;
+    }
+    font-size: calc(1rem + 2vw);
+  }
+
+  .Message {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    color: $color-text-announcement;
+    background-color: $color-background-announcement;
+  }
+  .Congratulations {
+    font-size: calc(1rem + 2vw);
+    margin-bottom: 1rem;
+  }
+  .Name {
+    font-size: calc(1.5rem + 2vw);
+    margin: calc(1rem + 2vw) auto calc(3rem + 2vw);
+  }
+}
+
+.Information {
+  display: flex;
+  justify-content: space-between;
+  font-size: 2rem;
+  align-items: baseline;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+
+  .RestartButton {
+    background-color: #fff;
+    color: #16191f;
+    border: 1px solid #879596;
+    border-radius: 2px;
+    padding: 1.6vw 3.2vw;
+    cursor: pointer;
+    &:hover {
+        color: #16191f;
+        border: 1px solid #879596;
+        background-color: #fff;
+    }
+    &:focus {
+        color: #16191f;
+        border: 1px solid #879596;
+        background-color: #fff;
+    }
+    @media (min-width: 448px) {
+        padding: 0.7rem 1.5rem;
+    }
+      font-size: 1.6rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .Row {
+    .Cell {
+      font-size: 10rem;
+    }
+  }
+  .Announcement {
+    .RestartButton {
+      font-size: 2rem;
+    }
+    .Congratulations {
+      font-size: 2.4rem;
+    }
+    .Name {
+      font-size: 3.6rem;
+      margin: 3rem auto 5rem;
+    }
+  }
+}
